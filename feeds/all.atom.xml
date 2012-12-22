@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>yarox</title><link href="http://yarox.github.com/" rel="alternate"></link><link href="http://yarox.github.com/feeds/all.atom.xml" rel="self"></link><id>http://yarox.github.com/</id><updated>2012-12-22T00:00:00+01:00</updated><entry><title>Hello, world!</title><link href="http://yarox.github.com/hello-world.html" rel="alternate"></link><updated>2012-12-22T00:00:00+01:00</updated><author><name>Adrian Martin</name></author><id>tag:yarox.github.com,2012-12-22:hello-world.html</id><summary type="html">&lt;p&gt;Finally, my very own github-based, python-powered website!&lt;/p&gt;
+</summary><category term="self"></category></entry></feed>
