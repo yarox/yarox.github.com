@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title> Wall&nbsp;Follower | The Underlying Beauty </title>
+
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../theme/css/font-awesome.css" type="text/css"/>
+  </head>
+  <body>
+    <div class=container>
+                    <h1><a href="/">The Underlying Beauty</a></h1>
+<div class=navigation>
+<ul>
+      <li><a href="../../index.html">Blog</a> </li>
+      <li><a href="../../archives.html">Archive</a> </li>
+      <li><a href="../../tags.html">Tags</a> </li>
+      <li><a href="../../pages/about-me.html">About</a> </li>
+  </ul>
+</div>
+<div class=separator></div>                
+        <div class=body>
+            <h1 class="title"> Wall&nbsp;Follower</h1>
+    <p class=date> Thu 21 March 2013 </p>
+    <div class="section" id="introduction">
+<h2>Introduction</h2>
+<p>To follow a wall, or in a more general sense, to follow the contours of an object, is an important behavior for autonomous mobile robots. Robots operating in an unknown, unstructured environment use their sensors to perceive the surroundings and plan their motions or trajectories&nbsp;accordingly.</p>
+<p>The objective of this experiment is to build a robot capable of following walls, but instead of creating fixed rules telling the robot what to do, we will use a more flexible evolutionary&nbsp;approach.</p>
+</div>
+<div class="section" id="approach">
+<h2>Approach</h2>
+<p>Control systems for autonomous robots are often programmed directly by researchers or designers. Such control programs can be very complex. Researchers must anticipate which abilities a given robot will need, and then formulate these into a control program or control&nbsp;hierarchy.</p>
+<p>As the complexity of an environment and task for a given autonomous robot increases, the difficulty of designing an adequate control system by hand becomes a limiting factor in the degree of functional complexity that can be achieved. A potential solution to this problem is to develop methods that allow robots to learn how to perform complex tasks&nbsp;automatically.</p>
+<p><em>Evolutionary computation</em> is a subfield of artificial intelligence that involves combinatorial optimization problems. This approach uses iterative progress, such as growth or development in a population. This population is then selected in a guided random search to achieve the desired&nbsp;end.</p>
+<p>In our case, we use an <em>artificial neural networks</em> as a control system and an evolutionary algorithm as a training method. This combination is commonly known as <em>neuroevolution</em>.</p>
+<p>We chose the <em>differential evolution</em> (<span class="caps">DE</span>) method as the evolutionary algorithm to train our neural networks. This method optimizes a problem by maintaining a population of candidate solutions and creating new candidate solutions by combining existing ones according to a simple formulae, and then keeping whichever candidate solution has the best fitness on the optimization problem at hand. Basically, <span class="caps">DE</span> adds the weighted difference between two population vectors to a third vector. This way no separate probability distribution has to be used which makes the scheme completely&nbsp;self-organizing.</p>
+<p>Successful evolution of intelligent autonomous robot controllers is ultimately dependent on the formulation of suitable <em>fitness functions</em> that are capable of selecting for successful behaviors without specifying the low-level implementation details of those&nbsp;behaviors.</p>
+<p>We can distinguish between various kinds of fitness functions based on the degree of a priori knowledge introduced by designer (in descending&nbsp;order):</p>
+<blockquote>
+<dl class="docutils">
+<dt><strong>Training&nbsp;data</strong></dt>
+<dd>Fitness is maximized when the system in question produces a minimum output error when presented with a given set of inputs with a known set of optimal associated&nbsp;outputs.</dd>
+<dt><strong>Behavioral</strong></dt>
+<dd>Task-specific hand-formulated functions that measure various aspects of what a robot is doing and how it is doing it. These types of functions generally include several sub-functions or terms that are combined into a weighted sum or product. These sub-functions or terms are intended to measure simple action-response behaviors, low-level sensor-actuator mappings, or other events/features local to the&nbsp;robot.</dd>
+<dt><strong>Functional&nbsp;incremental</strong></dt>
+<dd>The evolutionary process begins by selecting for a simple ability upon which a more complex overall behavior can be built. Once the simple ability is evolved, the fitness function is altered or augmented to select for a more complex behavior. This sequence of evolution followed by fitness function augmentation continues until eventually the desired final behavior is achieved. The overall process can be considered one of explicit training for simple sub-behaviors followed by training for successively more complex&nbsp;behaviors.</dd>
+<dt><strong>Tailored</strong></dt>
+<dd>Contain aggregate terms that measure some degree or aspect of task completion that is divorced from any particular behavior or method. Hence, tailored fitness functions combine elements from behavioral fitness functions and aggregate fitness&nbsp;functions.</dd>
+<dt><strong>Environmental&nbsp;incremental</strong></dt>
+<dd>Rather than simply increasing the complexity of the fitness selection function, one form of incremental evolution involves augmenting the difficulty of the environment in which the robots must&nbsp;operate.</dd>
+<dt><strong>Competitive and&nbsp;co-competitive</strong></dt>
+<dd>Utilize direct competition between members of an evolving population. in competitive evolution robot controllers compete against one another within the same environment so that the behavior of one robot directly influences the behavior, and therefore fitness evaluation, of another. In co-competitive evolution two separate populations (performing distinct tasks) compete against each other within the same&nbsp;environment.</dd>
+<dt><strong>Aggregate</strong></dt>
+<dd>Select only for high-level success or failure to complete a task without regard to how the task was completed. This type of selection reduces injection of human bias into the evolving system by aggregating the evaluation of benefit (or deficit) of all of the robot&#8217;s behaviors into a single success/failure&nbsp;term.</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation</h2>
+<p>The robot has two laser sensors and a motion actuator. The laser sensors returns the distance to the closest object, and the motion actuator recieves the values of linear and angular speed and applies them to the robot as direct&nbsp;translation.</p>
+<img alt="robot overview" src="https://dl.dropbox.com/u/18317072/robot.png" />
+<p>A <em>feed forward neural network</em> (<span class="caps">FFANN</span>) with two inputs and two outputs is used to control our robot. For the activation function, we used a <em>logistic function</em> bounded between <cite>-5</cite> and <cite>5</cite>. We feed the <span class="caps">FFANN</span> with the values from the two laser sensors, and send the output to the motion actuator. This causes the robot to move around the&nbsp;environment.</p>
+<img alt="controller overview" src="https://dl.dropbox.com/u/18317072/controller.png" />
+<p>The weights of the FFANNs are evolved using the differential evolution algorithm with the following parameters: weighting factor <cite>F = 0.8</cite>, crossover constant <cite><span class="caps">CR</span> = 0.9</cite>, and number of parents <cite><span class="caps">NP</span> = 20</cite>.</p>
+<p>We let the system evolve for <cite>20</cite> generations. In each generation, the fitness of a robot is calculated as the average fitness obtained after two executions, each execution lasting <cite>100</cite> clock&nbsp;cycles.</p>
+<p>An aggregate fitness function was designed with an energetic model in mind: a robot could gain or lose energy depending on her actions when moving around the environment. Thus, the fitness is determined only by the energy level at the end of the evaluation&nbsp;period.</p>
+<p>To implement this model, several objects (&#8220;cookies&#8221;) were placed near the walls. The more &#8220;cookies&#8221; a robot gets during its execution time, the higher its energy. We assume that a robot that has managed to get a large number of &#8220;cookies&#8221; (and therefore energy) has developed a controller that allows her to follow the walls&nbsp;efficiently.</p>
+<p>The whole process can be summarized as&nbsp;follows:</p>
+<ol class="arabic">
+<li><p class="first">Create a&nbsp;robot.</p>
+</li>
+<li><p class="first">Create a population of networks. For each&nbsp;generation:</p>
+<blockquote>
+<ol class="arabic">
+<li><p class="first">Perturbate the current population creating a candidate population. For each candidate&nbsp;network:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>Set the network as the robot&nbsp;controller.</li>
+<li>Put the robot in the middle of the room and start the&nbsp;evaluation.</li>
+<li>The network fitness is the final robot&nbsp;energy.</li>
+</ol>
+</blockquote>
+</li>
+<li><p class="first">Once we have evaluated the whole candidate population, the selection process starts, yielding a new current&nbsp;population.</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p class="first">Return the network with the highest&nbsp;fitness.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<p>At the end of the 20 generations the <span class="caps">DE</span> algorithm had converged significantly. The following figure shows how the fitness of the population improved, reaching maximum levels. Although there is some room for improvement, we will accept this suboptimal result due to long simulation&nbsp;times.</p>
+<img alt="fitness evolution" src="https://dl.dropbox.com/u/18317072/fitness_evo.png" style="width: 700px;" />
+<p><a class="reference external" href="http://youtu.be/ffNPedVsot4">Next</a> video shows the best robot in action. As evidence shows, we can conclude that her has managed to develop the task satisfactorily, even though maximum fitness level was not&nbsp;reached.</p>
+<p>In this <a class="reference external" href="http://youtu.be/unuObGm6SQ0">other</a> video, we can see an evolution overview, showing the behavior of the best robot of each generation. At first, robots move randomly, but after a short period of time, they learn to stay at a distance of the walls. Finally, they manage to get most of the &#8220;cookies&#8221; during their evaluation time. The fact that they seems to prefer turning to the right is due to&nbsp;chance.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Automatic robot controller development methods that do not require hand coding or in-depth human knowledge are potentially of great value because it may be possible to apply them to domains in which humans have insufficient knowledge to develop adequate controllers&nbsp;directly.</p>
+<p>Under a short number of iterations and with a small population, a near optimum behavior was achieved. We introduced very little knowledge about the problem into the robots; they exploited the environment and their bodies, improving their fitness generation after&nbsp;generation.</p>
+<p>We have shown that this approach is simple, yet flexible and powerful. It can be applied to more complex domains, taking into account that the difficult part is coming up with a good fitness&nbsp;function.</p>
+</div>
+<div class="section" id="references">
+<h2>References</h2>
+<ol class="arabic simple">
+<li>Artificial neural network. (2012, October 13). In Wikipedia, The Free Encyclopedia. Retrieved 07:46, October 18, 2012, from <a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Artificial_neural_network&amp;oldid=517534177">http://en.wikipedia.org/w/index.php?title=Artificial_neural_network&amp;oldid=517534177</a></li>
+<li>Feedforward neural network. (2012, September 21). In Wikipedia, The Free Encyclopedia. Retrieved 07:32, October 18, 2012, from <a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Feedforward_neural_network&amp;oldid=513807431">http://en.wikipedia.org/w/index.php?title=Feedforward_neural_network&amp;oldid=513807431</a></li>
+<li>Evolutionary computation. (2012, October 1). In Wikipedia, The Free Encyclopedia. Retrieved 07:34, October 18, 2012, from <a class="reference external" href="http://en.wikipedia.org/w/index.php?title=Evolutionary_computation&amp;oldid=515418753">http://en.wikipedia.org/w/index.php?title=Evolutionary_computation&amp;oldid=515418753</a></li>
+<li>Storn, R., <span class="amp">&amp;</span> Price, K. (1997). Differential Evolution – A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces. Journal of Global Optimization, 11(4), 341-359. Springer. Retrieved from <a class="reference external" href="http://www.springerlink.com/index/X555692233083677.pdf">http://www.springerlink.com/index/X555692233083677.pdf</a></li>
+<li>Nelson, A. L., Barlow, G. J., <span class="amp">&amp;</span> Doitsidis, L. (2009). Fitness functions in evolutionary robotics: A survey and analysis. Robotics and Autonomous Systems, 57(4), 345-370. Elsevier <span class="caps">B.V.</span> Retrieved from <a class="reference external" href="http://www.nelsonrobotics.org/paper_archive_nelson/nelson-jras-2009.pdf">http://www.nelsonrobotics.org/paper_archive_nelson/nelson-jras-2009.pdf</a></li>
+<li>Braitenberg, V. (1986). Vehicles: Experiments in Synthetic Psychology.&nbsp;<span class="caps">MIT</span>.</li>
+<li>Binti, R. (2005). Wall Following Mobile Robot. Kolej Universiti Teknikal Kebangsaan Malaysia. Retrieved from <a class="reference external" href="http://library.utem.edu.my/index2.php?option=com_docman&amp;task=doc_view&amp;gid=3878&amp;Itemid=208">http://library.utem.edu.my/index2.php?option=com_docman&amp;task=doc_view&amp;gid=3878&amp;Itemid=208</a></li>
+</ol>
+</div>
+
+    
+    <div class=twitter>
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+        <p class=tags>This entry was tagged as
+            <a href="../../tag/python.html">python</a>
+            <a href="../../tag/robots.html">robots</a>
+            <a href="../../tag/simulation.html">simulation</a>
+            <a href="../../tag/evolution.html">evolution</a>
+            <a href="../../tag/neural-networks.html">neural networks</a>
+          </p>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>        </div>
+        
+                    <div class=footer>
+  <p>&copy; Copyright <script language="JavaScript">var date = new Date(); document.write(date.getFullYear());</script> by Adrian Martin</p>
+  <p> Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.
+    <a href="https://github.com/fjavieralba/flasky">Theme</a>  by <a href="http://fjavieralba.com">fjavieralba</a>
+  </p>
+  <p>
+    <div class=social style="font-size: 27px;">
+      <ul>
+        <script language="JavaScript">
+          u = '';
+          s = '';
+          document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
+        </script>
+            <li><i class="icon-envelope icon-large"></i> </li>
+        </a>
+        <a href="http://twitter.com/yarox" target="_blank"> <li> <i class="icon-twitter-sign icon-large"> </li></i> </a>
+        <a href="http://es.linkedin.com/in/adrimartin"><li><i class="icon-linkedin-sign icon-large" ></i></li></a>
+        <a href="http://github.com/yarox" target="_blank"> <li> <i class="icon-github-sign icon-large"></i> </li> </a>
+        <a href="../../feeds/all.atom.xml" rel="alternate" title="Recent Blog Posts"><li> <i class="icon-rss icon-large"></i> </li></a>
+      </ul>
+    </div>
+  </p>
+</div>            </div>
+          </body>
+</html>
