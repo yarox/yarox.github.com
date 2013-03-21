@@ -21,8 +21,8 @@ h2                          { font-size: 36px; line-height: 40px; }
 div.container               { width: 740px; margin: 48px auto; padding: 0; }
 div.header                  { float: left; }
 div.navigation              { float: left; }
-div.navigation a            { text-decoration: none; 
-                              font-size: 22px; 
+div.navigation a            { text-decoration: none;
+                              font-size: 22px;
                               padding: 10px;
                             }
 
@@ -110,10 +110,10 @@ p.tags          { text-align: right; font-style: italic; }
 ul.tagcloud     { font-size: 16px; margin: 36px 0; padding: 0;
                   list-style: none; }
 ul.tagcloud li  { margin: 0; padding: 0 10px; display: inline; }
-li.tag-1           {font-size: 100.0%;}
-li.tag-2           {font-size: 130.0%;}
-li.tag-3           {font-size: 160.0%;}
-li.tag-4           {font-size: 200.0%;}
+li.tag-4           {font-size: 100.0%;}
+li.tag-3           {font-size: 130.0%;}
+li.tag-2           {font-size: 160.0%;}
+li.tag-1           {font-size: 200.0%;}
 
 /* latex math */
 span.math img   { margin-bottom: -7px; }
@@ -123,9 +123,9 @@ div.blog-epilogue a         {text-decoration: none;
                              padding-left: 30px; padding-right: 30px;}
 
 /* about img */
-img.align-left { 
-    float: left; 
-    margin: 20px; 
+img.align-left {
+    float: left;
+    margin: 20px;
 }
 
 /* github gists */
