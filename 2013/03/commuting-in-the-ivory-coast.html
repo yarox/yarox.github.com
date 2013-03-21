@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet' type='text/css' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title> Commuting in the Ivory&nbsp;Coast | The Underlying Beauty </title>
+
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../theme/css/font-awesome.css" type="text/css"/>
+  </head>
+  <body>
+    <div class=container>
+                    <h1><a href="/">The Underlying Beauty</a></h1>
+<div class=navigation>
+<ul>
+      <li><a href="../../index.html">Blog</a> </li>
+      <li><a href="../../archives.html">Archive</a> </li>
+      <li><a href="../../tags.html">Tags</a> </li>
+      <li><a href="../../pages/about-me.html">About</a> </li>
+  </ul>
+</div>
+<div class=separator></div>                
+        <div class=body>
+            <h1 class="title"> Commuting in the Ivory&nbsp;Coast</h1>
+    <p class=date> Thu 21 March 2013 </p>
+    <p>Orange <a class="reference external" href="http://www.d4d.orange.com/home">Data for Development</a> is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange&#8217;s Ivory Coast subsidiary, to help address society development questions in novel ways. The data sets are based on anonymized Call Detail Records extracted from Orange&#8217;s customer base, covering the months of December 2011 to April&nbsp;2012.</p>
+<a class="reference external image-reference" href="http://github.com/yarox/d4d-visor"><img alt="d4d visor" src="https://raw.github.com/yarox/d4d-visor/master/thumbnail.png" style="width: 800px;" /></a>
+<p>Our <a class="reference external" href="http://labs.paradigmatecnologico.com/2012/11/15/d4d-challenge-accepted/">team</a> used the geolocation data from call detail records extracted from Orange&#8217;s customer base in order to know in which areas the customers have been moving around, to help us discover the morning and evening rush hours: the time when users were commuting between their place of residence and place of&nbsp;work.</p>
+<div class="section" id="visualization">
+<h2>Visualization</h2>
+<p>We used <a class="reference external" href="http://www.python.org/">Python</a> for crunching the numbers and <a class="reference external" href="http://d3js.org/">D3.js</a> for creating the&nbsp;visualization.</p>
+<div class="section" id="bar-chart">
+<h3>Bar&nbsp;Chart</h3>
+<p>The bar chart shows the total population density at a fixed time slot. Rush ours can be identified by the two peaks that emerge every day, one in the morning and one in the&nbsp;afternoon.</p>
+</div>
+<div class="section" id="choropleth">
+<h3>Choropleth</h3>
+<p>The choropleth shows how the population density flows over time, as people move from one region to another. Notice how the density increases (areas get darker) as the time gets closer to the rush&nbsp;hours.</p>
+</div>
+</div>
+<div class="section" id="take-a-look">
+<h2>Take a&nbsp;look!</h2>
+<p>If you want to see it running, you can either visit this <a class="reference external" href="http://bl.ocks.org/yarox/5108994">link</a> for a demo with simulated data, or clone the repo and start a local web server. For example, you can run Python&#8217;s built-in&nbsp;server:</p>
+<div class="highlight"><pre>python -m SimpleHTTPServer 8888 <span class="amp">&amp;</span>
+</pre></div>
+<p>or Node.js&#8217; <a class="reference external" href="http://github.com/nodeapps/http-server">http-server</a>:</p>
+<div class="highlight"><pre>http-server -p 8888 <span class="amp">&amp;</span>
+</pre></div>
+<p>Once this is running, go to <a class="reference external" href="http://localhost:8888/">http://localhost:8888/</a> and use the <strong>up</strong> and <strong>down</strong> keys to change between days, and the <strong>left</strong> and <strong>right</strong> keys to move between&nbsp;hours.</p>
+</div>
+
+    
+    <div class=twitter>
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+        <p class=tags>This entry was tagged as
+            <a href="../../tag/visualization.html">visualization</a>
+            <a href="../../tag/python.html">python</a>
+            <a href="../../tag/d3.html">d3</a>
+          </p>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>        </div>
+        
+                    <div class=footer>
+  <p>&copy; Copyright <script language="JavaScript">var date = new Date(); document.write(date.getFullYear());</script> by Adrian Martin</p>
+  <p> Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.
+    <a href="https://github.com/fjavieralba/flasky">Theme</a>  by <a href="http://fjavieralba.com">fjavieralba</a>
+  </p>
+  <p>
+    <div class=social style="font-size: 27px;">
+      <ul>
+        <script language="JavaScript">
+          u = '';
+          s = '';
+          document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
+        </script>
+            <li><i class="icon-envelope icon-large"></i> </li>
+        </a>
+        <a href="http://twitter.com/yarox" target="_blank"> <li> <i class="icon-twitter-sign icon-large"> </li></i> </a>
+        <a href="http://es.linkedin.com/in/adrimartin"><li><i class="icon-linkedin-sign icon-large" ></i></li></a>
+        <a href="http://github.com/yarox" target="_blank"> <li> <i class="icon-github-sign icon-large"></i> </li> </a>
+        <a href="../../feeds/all.atom.xml" rel="alternate" title="Recent Blog Posts"><li> <i class="icon-rss icon-large"></i> </li></a>
+      </ul>
+    </div>
+  </p>
+</div>            </div>
+          </body>
+</html>

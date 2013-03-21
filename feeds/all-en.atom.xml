@@ -1,3 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Underlying Beauty</title><link href="http://yarox.github.com/" rel="alternate"></link><link href="http://yarox.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://yarox.github.com/</id><updated>2012-12-23T22:36:20+01:00</updated><entry><title>Hello, world!</title><link href="http://yarox.github.com/2012/12/hello-world.html" rel="alternate"></link><updated>2012-12-23T22:36:20+01:00</updated><author><name>Adrian Martin</name></author><id>tag:yarox.github.com,2012-12-23:2012/12/hello-world.html</id><summary type="html">&lt;p&gt;Finally, my very own github-based, python-powered&amp;nbsp;website!&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Underlying Beauty</title><link href="http://yarox.github.com/" rel="alternate"></link><link href="http://yarox.github.com/feeds/all-en.atom.xml" rel="self"></link><id>http://yarox.github.com/</id><updated>2013-03-21T12:26:53+01:00</updated><entry><title>Commuting in the Ivory Coast</title><link href="http://yarox.github.com/2013/03/commuting-in-the-ivory-coast.html" rel="alternate"></link><updated>2013-03-21T12:26:53+01:00</updated><author><name>Adrian Martin</name></author><id>tag:yarox.github.com,2013-03-21:2013/03/commuting-in-the-ivory-coast.html</id><summary type="html">&lt;p&gt;Orange &lt;a class="reference external" href="http://www.d4d.orange.com/home"&gt;Data for Development&lt;/a&gt; is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange&amp;#8217;s Ivory Coast subsidiary, to help address society development questions in novel ways. The data sets are based on anonymized Call Detail Records extracted from Orange&amp;#8217;s customer base, covering the months of December 2011 to April&amp;nbsp;2012.&lt;/p&gt;
+&lt;a class="reference external image-reference" href="http://github.com/yarox/d4d-visor"&gt;&lt;img alt="d4d visor" src="https://raw.github.com/yarox/d4d-visor/master/thumbnail.png" style="width: 800px;" /&gt;&lt;/a&gt;
+&lt;p&gt;Our &lt;a class="reference external" href="http://labs.paradigmatecnologico.com/2012/11/15/d4d-challenge-accepted/"&gt;team&lt;/a&gt; used the geolocation data from call detail records extracted from Orange&amp;#8217;s customer base in order to know in which areas the customers have been moving around, to help us discover the morning and evening rush hours: the time when users were commuting between their place of residence and place of&amp;nbsp;work.&lt;/p&gt;
+&lt;div class="section" id="visualization"&gt;
+&lt;h2&gt;Visualization&lt;/h2&gt;
+&lt;p&gt;We used &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; for crunching the numbers and &lt;a class="reference external" href="http://d3js.org/"&gt;D3.js&lt;/a&gt; for creating the&amp;nbsp;visualization.&lt;/p&gt;
+&lt;div class="section" id="bar-chart"&gt;
+&lt;h3&gt;Bar&amp;nbsp;Chart&lt;/h3&gt;
+&lt;p&gt;The bar chart shows the total population density at a fixed time slot. Rush ours can be identified by the two peaks that emerge every day, one in the morning and one in the&amp;nbsp;afternoon.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="choropleth"&gt;
+&lt;h3&gt;Choropleth&lt;/h3&gt;
+&lt;p&gt;The choropleth shows how the population density flows over time, as people move from one region to another. Notice how the density increases (areas get darker) as the time gets closer to the rush&amp;nbsp;hours.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="take-a-look"&gt;
+&lt;h2&gt;Take a&amp;nbsp;look!&lt;/h2&gt;
+&lt;p&gt;If you want to see it running, you can either visit this &lt;a class="reference external" href="http://bl.ocks.org/yarox/5108994"&gt;link&lt;/a&gt; for a demo with simulated data, or clone the repo and start a local web server. For example, you can run Python&amp;#8217;s built-in&amp;nbsp;server:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m SimpleHTTPServer 8888 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;or Node.js&amp;#8217; &lt;a class="reference external" href="http://github.com/nodeapps/http-server"&gt;http-server&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;http-server -p 8888 &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once this is running, go to &lt;a class="reference external" href="http://localhost:8888/"&gt;http://localhost:8888/&lt;/a&gt; and use the &lt;strong&gt;up&lt;/strong&gt; and &lt;strong&gt;down&lt;/strong&gt; keys to change between days, and the &lt;strong&gt;left&lt;/strong&gt; and &lt;strong&gt;right&lt;/strong&gt; keys to move between&amp;nbsp;hours.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="visualization"></category><category term="python"></category><category term="d3"></category></entry><entry><title>Hello, world!</title><link href="http://yarox.github.com/2013/03/hello-world.html" rel="alternate"></link><updated>2013-03-21T09:28:54+01:00</updated><author><name>Adrian Martin</name></author><id>tag:yarox.github.com,2013-03-21:2013/03/hello-world.html</id><summary type="html">&lt;p&gt;Finally, my very own github-based, python-powered&amp;nbsp;website!&lt;/p&gt;
 </summary><category term="self"></category></entry></feed>
