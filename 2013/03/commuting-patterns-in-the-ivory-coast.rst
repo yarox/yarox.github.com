@@ -1,8 +1,8 @@
-Commuting in the Ivory Coast
-############################
+Commuting Patterns in the Ivory Coast
+#####################################
 
 :tags: visualization, python, d3
-:slug: commuting-in-the-ivory-coast
+:slug: commuting-patterns-in-the-ivory-coast
 :summary: Orange Data for Development is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange's Ivory Coast subsidiary, to help address society development questions in novel ways.
 
 Orange `Data for Development`__ is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange's Ivory Coast subsidiary, to help address society development questions in novel ways. The data sets are based on anonymized Call Detail Records extracted from Orange's customer base, covering the months of December 2011 to April 2012.
@@ -28,7 +28,7 @@ The choropleth shows how the population density flows over time, as people move 
 
 Take a look!
 ============
-If you want to see it running, you can either visit this link_ for a demo with simulated data, or clone the repo and start a local web server. For example, you can run Python's built-in server:
+If you want to see it running, clone the repo_ and start a local web server. For example, you can run Python's built-in server:
 
 .. code-block:: bash
 
@@ -46,7 +46,7 @@ Once this is running, go to http://localhost:8888/ and use the **up** and **down
 .. _Python: http://www.python.org/
 .. _D3.js: http://d3js.org/
 .. _http-server: http://github.com/nodeapps/http-server
-.. _link: http://bl.ocks.org/yarox/5108994
 .. _team: http://labs.paradigmatecnologico.com/2012/11/15/d4d-challenge-accepted/
+.. _repo: http://github.com/yarox/d4d-visor
 .. _d4d: http://www.d4d.orange.com/home
 __ d4d_
