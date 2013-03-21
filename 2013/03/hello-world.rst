@@ -3,6 +3,6 @@ Hello, world!
 
 :tags: self
 :slug: hello-world
-:summary: Finally, my very own github-based, python-powered website!
+:summary: My first post.
 
 Finally, my very own github-based, python-powered website!

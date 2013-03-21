@@ -1,5 +1,6 @@
 Commuting in the Ivory Coast
-##############################
+############################
+
 :tags: visualization, python, d3
 :slug: commuting-in-the-ivory-coast
 :summary: Orange Data for Development is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange's Ivory Coast subsidiary, to help address society development questions in novel ways.
