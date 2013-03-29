@@ -5,13 +5,12 @@ Wall Follower
 :date: 2013-03-21
 :tags: python, robots, simulation, evolution, neural networks
 :slug: wall-follower
-:summary: The objective of this experiment is to build a robot capable of following walls, but instead of creating fixed rules telling the robot what to do, we will use a more flexible evolutionary approach.
+
+The objective of this experiment is to build a robot capable of following walls, but instead of creating fixed rules telling the robot what to do, we will use a more flexible evolutionary approach.
 
 Introduction
 ############
 To follow a wall, or in a more general sense, to follow the contours of an object, is an important behavior for autonomous mobile robots. Robots operating in an unknown, unstructured environment use their sensors to perceive the surroundings and plan their motions or trajectories accordingly.
-
-The objective of this experiment is to build a robot capable of following walls, but instead of creating fixed rules telling the robot what to do, we will use a more flexible evolutionary approach.
 
 Approach
 ########
