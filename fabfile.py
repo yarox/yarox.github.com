@@ -90,8 +90,7 @@ def deploy(name='default'):
         for name, command in DEPLOYMENT.items():
             print('\t{0}: {1}'.format(name, command))
     else:
-        generate()
-        print('running "{0}": {1}'.format(name, commands))
+        #generate()
 
         with lcd(OUTPUT_PATH):
             for command in commands:
