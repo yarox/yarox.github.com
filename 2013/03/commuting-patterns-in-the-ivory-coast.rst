@@ -6,7 +6,7 @@ Commuting Patterns in the Ivory Coast
 :tags: visualization, python, d3
 :slug: commuting-patterns-in-the-ivory-coast
 
-Orange `Data for Development`__ is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange's Ivory Coast subsidiary, to help address society development questions in novel ways. The data sets are based on anonymized Call Detail Records extracted from Orange's customer base, covering the months of December 2011 to April 2012.
+Orange `Data for Development`__ is an open data challenge, encouraging research teams around the world to use four datasets of anonymous call patterns of Orange's Ivory Coast subsidiary, to help address society development questions in novel ways. The data sets are based on anonymized call detail records extracted from Orange's customer base, covering the months of December 2011 to April 2012.
 
 .. TEASER_END
 
