@@ -92,9 +92,9 @@ At the end of the 20 generations the DE algorithm had converged significantly. T
    :width: 700
    :alt: fitness evolution
 
-Next_ video shows the best robot in action. As evidence shows, we can conclude that her has managed to develop the task satisfactorily, even though maximum fitness level was not reached.
+`Next video`_ shows the best robot in action. As evidence shows, we can conclude that her has managed to develop the task satisfactorily, even though maximum fitness level was not reached.
 
-In this other_ video, we can see an evolution overview, showing the behavior of the best robot of each generation. At first, robots move randomly, but after a short period of time, they learn to stay at a distance of the walls. Finally, they manage to get most of the "cookies" during their evaluation time. The fact that they seems to prefer turning to the right is due to chance.
+In this `other video`_, we can see an evolution overview, showing the behavior of the best robot of each generation. At first, robots move randomly, but after a short period of time, they learn to stay at a distance of the walls. Finally, they manage to get most of the "cookies" during their evaluation time. The fact that they seems to prefer turning to the right is due to chance.
 
 Conclusion
 ##########
@@ -114,5 +114,7 @@ References
 6.  Braitenberg, V. (1986). Vehicles: Experiments in Synthetic Psychology. MIT.
 7. Binti, R. (2005). Wall Following Mobile Robot. Kolej Universiti Teknikal Kebangsaan Malaysia. Retrieved from http://library.utem.edu.my/index2.php?option=com_docman&task=doc_view&gid=3878&Itemid=208
 
-.. _next: http://youtu.be/ffNPedVsot4
-.. _other: http://youtu.be/unuObGm6SQ0
+
+.. LINKS
+.. _Next video: http://youtu.be/ffNPedVsot4
+.. _other video: http://youtu.be/unuObGm6SQ0
