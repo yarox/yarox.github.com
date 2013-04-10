@@ -148,9 +148,9 @@ svg {
 
     // Load the files and display the data
     queue()
-        .defer(d3.json, "data/map.geojson")
-        .defer(d3.csv, "data/weights0_1.csv")
-        .defer(d3.csv, "data/raw_weights.csv")
+        .defer(d3.json, "map.geojson")
+        .defer(d3.csv, "weights0_1.csv")
+        .defer(d3.csv, "raw_weights.csv")
         .await(ready);
 
     function ready(error, map_shape, map_weights, raw_weights) {
