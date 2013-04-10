@@ -144,11 +144,11 @@ svg {
 
     // Load the files and display the data
     queue()
-        .defer(d3.json, "data/level0-smp.geojson")
-        .defer(d3.json, "data/level1-smp.geojson")
-        .defer(d3.json, "data/level2-smp.geojson")
-        .defer(d3.json, "data/level3-smp.geojson")
-        .defer(d3.json, "data/roads-smp.geojson")
+        .defer(d3.json, "level0-smp.geojson")
+        .defer(d3.json, "level1-smp.geojson")
+        .defer(d3.json, "level2-smp.geojson")
+        .defer(d3.json, "level3-smp.geojson")
+        .defer(d3.json, "roads-smp.geojson")
         .await(ready);
 
     function ready(error, level0_shape, level1_shape, level2_shape,
