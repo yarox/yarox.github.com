@@ -144,15 +144,17 @@ svg {
 
     // Load the files and display the data
     queue()
-        .defer(d3.json, "level0-smp.geojson")
+        //.defer(d3.json, "level0-smp.geojson")
         .defer(d3.json, "level1-smp.geojson")
         .defer(d3.json, "level2-smp.geojson")
         .defer(d3.json, "level3-smp.geojson")
-        .defer(d3.json, "roads-smp.geojson")
+        //.defer(d3.json, "roads-smp.geojson")
         .await(ready);
 
-    function ready(error, level0_shape, level1_shape, level2_shape,
-                   level3_shape, roads_shape){
+    // function ready(error, level0_shape, level1_shape, level2_shape,
+    //                level3_shape, roads_shape){
+
+    function ready(error, level1_shape, level2_shape, level3_shape){
 
         svg.append("path")
             .datum(graticule)
