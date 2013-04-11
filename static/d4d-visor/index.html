@@ -147,13 +147,15 @@ svg {
     queue()
         .defer(d3.json, "data/level0-smp.geojson")
         .defer(d3.json, "data/level1-smp.geojson")
-        .defer(d3.json, "data/level2-smp.geojson")
-        .defer(d3.json, "data/level3-smp.geojson")
-        .defer(d3.json, "data/roads-smp.geojson")
+        // .defer(d3.json, "data/level2-smp.geojson")
+        // .defer(d3.json, "data/level3-smp.geojson")
+        // .defer(d3.json, "data/roads-smp.geojson")
         .await(ready);
 
-    function ready(error, level0_shape, level1_shape, level2_shape,
-                   level3_shape, roads_shape){
+    // function ready(error, level0_shape, level1_shape, level2_shape,
+    //                level3_shape, roads_shape){
+
+    function ready(error, level0_shape, level1_shape){
 
         svg.append("path")
             .datum(graticule)
@@ -170,20 +172,20 @@ svg {
             .enter().append("path")
                 .attr("d", path);
 
-        level2.selectAll("path")
-                .data(level2_shape.features)
-            .enter().append("path")
-                .attr("d", path);
+        // level2.selectAll("path")
+        //         .data(level2_shape.features)
+        //     .enter().append("path")
+        //         .attr("d", path);
 
-        level3.selectAll("path")
-                .data(level3_shape.features)
-            .enter().append("path")
-                .attr("d", path);
+        // level3.selectAll("path")
+        //         .data(level3_shape.features)
+        //     .enter().append("path")
+        //         .attr("d", path);
 
-        roads.selectAll("path")
-                .data(roads_shape.features)
-            .enter().append("path")
-                .attr("d", path);
+        // roads.selectAll("path")
+        //         .data(roads_shape.features)
+        //     .enter().append("path")
+        //         .attr("d", path);
 
     }
 
