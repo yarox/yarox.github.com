@@ -5,12 +5,11 @@
 body,
 svg {
     font: 10px Helvetica Neue;
-    fill: #666;
+    fill: none;
     width: 100%;
     height: 100%;
-    margin: 1% auto;
+    margin: 10px auto;
     overflow: hidden;
-    background: #999;
 }
 
 .label {
@@ -28,9 +27,14 @@ svg {
     font-size: 58px;
 }
 
-.counties {
-  stroke: #fff;
-  stroke-width: .25px;
+.level1 {
+    stroke: #fff;
+    stroke-width: .25px;
+}
+
+.level0 {
+    stroke: #fff;
+    stroke-width: 0.75px;
 }
 
 .separator {
@@ -54,11 +58,29 @@ svg {
 
 <body>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
     <script src="http://d3js.org/queue.v1.min.js"></script>
     <script>
 
     var width = 1200,
         height = 600;
+
+    var color = d3.scale.log()
+        .range(["#BFD3E6", "#49006A"])
+        .domain([1, 1650])
+        .clamp(true);
+
+    var projection = d3.geo.mercator()
+        .center([7.1317, 5.5230])
+        .rotate([7.5, -0.75])
+        .scale(3500);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+    var graticule = d3.geo.graticule()
+        .extent([[-180, 180], [180, -180]])
+        .step([1, 1]);
 
     // Main svg container
     var svg = d3.select("body").append("svg:svg")
@@ -67,24 +89,17 @@ svg {
         .attr("width", width)
         .attr("height", height);
 
-    // Map container
-    var color = d3.scale.log()
-        .range(["#BFD3E6", "#49006A"])
-        .domain([1, 1650])
-        .clamp(true);
-
-    var projection = d3.geo.mercator()
-        .center([7.1317, 5.5230])
-        .rotate([9, -0.75])
-        .scale(4000);
-
-    var path = d3.geo.path()
-        .projection(projection);
-
+    // Map container and child sublayers
     var map = svg.append("svg:g")
-        .attr("class", "counties")
+        .attr("class", "map")
         .attr("transform",
               "translate(" + 575 + "," + 85 + ")");
+
+    var level1 = map.append("svg:g")
+        .attr("class", "level1");
+
+    var level0 = map.append("svg:g")
+        .attr("class", "level0");
 
     // Chart container
     var chart_width = 350
@@ -149,15 +164,15 @@ svg {
 
     // Load the files and display the data
     queue()
-        .defer(d3.json, "data/map.geojson")
+        .defer(d3.json, "data/level0-smp.geojson")
+        .defer(d3.json, "data/level1-smp.geojson")
         .defer(d3.csv, "data/weights0_1.csv")
         .defer(d3.csv, "data/raw_weights.csv")
         .await(ready);
 
-    function ready(error, map_shape, map_weights, raw_weights) {
+    function ready(error, level0_shape, level1_shape,
+                   map_weights, raw_weights){
 
-        // Load the raw_weights (Array of Objects) into an Array of Arrays for
-        // easier manipulation.
         for (i in raw_weights) {
             chart_weights[i] = [];
             for (j in raw_weights[i]) {
@@ -165,11 +180,15 @@ svg {
             }
         }
 
-        // Create the placeholder for the map.
-        map.selectAll("path")
-            .data(map_shape.features)
+        level0.selectAll("path")
+                .data(level0_shape.features)
             .enter().append("path")
-            .attr("d", path);
+                .attr("d", path);
+
+        level1.selectAll("path")
+                .data(level1_shape.features)
+            .enter().append("path")
+                .attr("d", path);
 
         // Create the initial bar chart.
         y.domain([0, d3.max(chart_weights[day], function(d) { return d; })]);
@@ -200,11 +219,11 @@ svg {
 
         weights.forEach(function(d) { weight_by_id[d.id] = +d.weight; });
 
-        map.selectAll("path")
+        level1.selectAll("path")
             .transition()
             .duration(750)
             .attr("fill", function(d) {
-                return color(weight_by_id[d.id] || 1 ); });
+                return color(weight_by_id[d.id] || 1); });
 
         // Redraw the chart
         y.domain([0, d3.max(chart_weights[day], function(d) { return d; })]);
