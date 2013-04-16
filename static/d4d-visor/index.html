@@ -3,7 +3,7 @@
 <style>
 
 body {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, .5);
 }
 
 body,
@@ -72,7 +72,7 @@ svg {
         height = 600;
 
     var color = d3.scale.log()
-        .range(["#BFD3E6", "#49006A"])
+        .range(["#C6DBEF", "#084594"])
         .domain([1, 1650])
         .clamp(true);
 
@@ -261,9 +261,9 @@ svg {
             code = "#666";
         } else {
             if (i < 12) {
-                code = "#BFD3E6";
+                code = "#C6DBEF";
             } else {
-                code = "#49006A";
+                code = "#084594";
             }
         }
 
