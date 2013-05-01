@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #myGallery{
+      position:relative;
+      width:600px; /* Set your image width */
+      height:800px; /* Set your image height */
+    }
+    #myGallery img{
+      display:none;
+      position:absolute;
+      top:0;
+      left:0;
+    }
+    #myGallery img.active{
+      display:block;
+    }
+  </style>
+
+<body>
+    <meta name="viewport" content="target-densitydpi=device-dpi" />
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    function swapImages(){
+      var $active = $('#myGallery .active');
+      var $next = ($('#myGallery .active').next().length > 0) ? $('#myGallery .active').next() : $('#myGallery img:first');
+      $active.fadeOut(function(){
+      $active.removeClass('active');
+      $next.fadeIn().addClass('active');
+      });
+    }
+
+    $(document).ready(function(){
+      setInterval('swapImages()', 4000);
+    });
+
+  </script>
+
+  <div id="myGallery">
+    <img src="data/svg/sunday.png" class="active" />
+    <img src="data/svg/monday.png" />
+    <img src="data/svg/tuesday.png" />
+    <img src="data/svg/wednesday.png" />
+    <img src="data/svg/thursday.png" />
+    <img src="data/svg/friday.png" />
+    <img src="data/svg/saturday.png" />
+  </div>
+
+</body>

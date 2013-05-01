@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+
+<body>
+    <meta name="viewport" content="target-densitydpi=device-dpi" />
+    <object src="data/svg/monday.svg" type="image/svg+xml"/>
+</body>
